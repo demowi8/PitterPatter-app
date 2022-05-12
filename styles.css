@@ -1,0 +1,14 @@
+.layout {
+    display: grid;
+    grid-template-columns: 275px auto 350px;
+    margin: 0 auto;
+}
+.layout.layout__right-sidebar {
+    position: fixed;
+    
+}
+.brand {
+    width: 50px;
+    height: 50px;
+    
+}
