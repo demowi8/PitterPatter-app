@@ -1,12 +1,48 @@
-.layout {
-    display: grid;
-    grid-template-columns: 275px auto 350px;
-    margin: 0 auto;
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
 }
-.layout.layout__right-sidebar {
-    position: fixed;
-    
+
+.wrapper {
+   width: 100vw;
+   height: 100vh;
+   overflow: hidden;
+   background-color: aqua;
 }
+
+
+.mainbody {
+    width: 1200px;
+    height: auto;
+    margin: 10px auto 10px auto;
+    overflow: hidden;
+    background-color: white;
+}
+
+.col1 {
+     width: 23%;
+     float: left;
+     height: 300px;
+     background-color: green;
+}
+
+.col2 {
+    width: 50%;
+    margin-left: 2%;
+    float: left;
+    height: 300px;
+    background-color: tomato;
+}
+
+.col3 {
+    width: 23%;
+    float: right;
+    height: 300px;
+    background-color: purple;
+}
+
+
 .brand {
     width: 50px;
     height: 50px;

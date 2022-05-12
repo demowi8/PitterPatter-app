@@ -6,36 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pitter Patter</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="navbar.css">
+    <script src="script.js"></script>
 </head>
 <body>
-    <div class="layout">
-        <div class="layout__left-sidebar">
-            <img src="./assets/twitter-seeklogo.com.svg" class="brand"></img>
-            Left bar
-        </div>
+    <div class="wrapper">
+        <div class="navbar" id="main-navbar">
+            <div class="navbar-inner" id="navbar-inner">
+                <div class="navbar-col1">
+                    <div class="navbar-btn">Home</div>
+                    <div class="navbar-btn">Notifications</div>
+                    <div class="navbar-btn">Messages</div>
 
-        <div class="layout__main">Main bar
-            <h3>Let's get atter'</h3>
-    <form id="newPatter">
-      Name: 
-      <input type="text" id="new-pet-name" placeholder="Name" name="name" value="">
-      Nickname:
-      <input type="text" id="new-pet-nickName" placeholder="Nickname" name="aka" value="">
-      Species:
-      <input type="text" id="new-pet-species" placeholder="Species" name="species" value="">
-      Breed:
-      <input type="text" id="new-pet-breed" placeholder="Breed" name="breed" value="">
-      Age:
-      <input type="number" id="new-pet-age" placeholder="Age" name="age" value="">
-  
-      <button id="putBtn" onclick="addPet()" class="" type="button">Submit</button> 
-
+                </div>
+                <div class="navbar-col2">col 2</div>
+                <div class="navbar-col3">
+                    <div class="navbar-btn">Search</div>
+                    <div class="navbar-btn">New Pitter</div>
+                    <div class="navbar-btn">Login</div>
+                </div>
+            </div>
         </div>
-        <div class="layout__right-sidebar">Right bar</div>
+        <div class="mainbody" id="mainbody">
+            <div class="col1">col 1</div>
+            <div class="col2">col 2</div>
+            <div class="col3">col 3</div>
+        </div>
     </div>
-
-
-    
 
 </body>
 </html>
