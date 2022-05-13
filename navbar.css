@@ -3,46 +3,49 @@
     width: 100%;
     height: 60px;
     overflow: hidden;
-    background-color: whitesmoke;
+    background-color: var(--light);
 }
+
+
 
 .navbar-inner {
     width: 1200px;
-    height: 50px;
+    height: 60px;
     margin: 10px auto 10px auto;
     overflow: hidden;
-    background-color: #ffdd11;
+    background-color: var(--light);
 }
 
 .navbar-col1 {
-    width: 28%;
+    width: 35%;
     float: left;
     height: 100%;
-    background-color: green;
+    background-color: goldenrod;
 }
 
 .navbar-col2 {
-   width: 44%;
+   width: 50%;
    margin-left: 2%;
-   float: left;
-   height: 100%;
-   background-color: tomato;
-}
-
-.navbar-col3 {
-   width: 24%;
    float: right;
    height: 100%;
-   background-color: purple;
 }
+
 
 .navbar-btn {
     width: 30%;
-    margin-right: 10px;
+    margin-top: 20px;
     float: left;
     height: 100%;
+    font-weight: 900;
     text-align: center;
     font-size: 1.2em;
-    color: #ddd;
+    color: black;
 }
 
+.navbar-btn:hover {
+    color:blue;
+}
+.brand {
+    height: 50px;
+    width: 50px;
+}
