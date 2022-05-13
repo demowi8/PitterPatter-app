@@ -1,50 +1,132 @@
+:root {
+    --dark: #374151;
+    --darker: #1f2937;
+    --darkest: #111827;
+    --grey: #6b7280;
+    --light: rgba(239, 229, 39, 0.856);
+    --pink: #ec4899;
+    --purple: #8b5cf6;
+    --white: #fff;
+}
 body {
     margin: 0px;
     padding: 0px;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--light);
 }
 
-.wrapper {
-   width: 100vw;
-   height: 100vh;
-   overflow: hidden;
-   background-color: aqua;
+h2{
+    text-align: center;
 }
 
+th {
+    margin-left: 3px;
+
+}
 
 .mainbody {
     width: 1200px;
     height: auto;
     margin: 10px auto 10px auto;
     overflow: hidden;
-    background-color: white;
+    background-color: var(--light);
 }
 
 .col1 {
      width: 23%;
      float: left;
-     height: 300px;
-     background-color: green;
+     height: 500px;
+     background-color: gold;
+     padding: 10px;
+     border-radius: 10px;
 }
 
 .col2 {
     width: 50%;
-    margin-left: 2%;
     float: left;
-    height: 300px;
-    background-color: tomato;
+    margin-left: 2%;
+    height: 500px;
+    background-color: goldenrod;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .col3 {
-    width: 23%;
+    width: 18%;
     float: right;
-    height: 300px;
-    background-color: purple;
+    height: 500px;
+    background-color: gold;
+    padding: 10px;
+    border-radius: 10px;
 }
 
+label {
+    margin-left: 5px;
+    font-size:large;
+    font-weight: 400;
+}
 
-.brand {
-    width: 50px;
-    height: 50px;
-    
+table {
+    width: 80%;
+    margin: 40px auto;
+    background: var(--light);
+    border-radius: 10px;
+}
+tr:nth-child(even), table.feed thead> tr {
+    background-color: var(--white);
+}
+tbody {
+    text-align: center;
+    width: 100%;
+}
+
+.login {
+    margin: 5px 5px 5px 5px;
+    border: solid #111827;
+    border-radius: 10px;
+    height: 20px;
+    width: 60%;
+}
+
+#login {
+    background-color: darkgoldenrod;
+    border: solid #111827;
+    border-radius: 15px;
+    margin: 5px 2px 5px 2px;
+    text-align:left;
+}
+
+#newPatter {
+    margin: 2% 2% 2% 2%;
+    border:solid var(--darkest);
+    padding: 2% 2% 2% 2%;
+    background-color: var(--light);
+}
+
+#new-topic {
+    display:block;
+    width: 40%;
+    height: 30px;
+    border: 2px solid;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+#new-textbox {
+    display:block;
+    width: 75%;
+    height: 150px;
+    border: 2px solid;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+#putBtn {
+    background-color: var(--purple);
+    font-size: 1.25rem;
+    height: 35px;
+    width: 80px;
+    border-style:solid black;
+    margin: 5px 5px 5px 10px;
+}
+#putBtn:hover {
+    opacity:60%;
 }
