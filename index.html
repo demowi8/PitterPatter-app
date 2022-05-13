@@ -10,29 +10,80 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <div class="wrapper">
+    
         <div class="navbar" id="main-navbar">
             <div class="navbar-inner" id="navbar-inner">
                 <div class="navbar-col1">
-                    <div class="navbar-btn">Home</div>
-                    <div class="navbar-btn">Notifications</div>
-                    <div class="navbar-btn">Messages</div>
-
+                    <div class="navbar-btn">Pitter</div>
+                    <div class="navbar-btn">Patter</div>
                 </div>
-                <div class="navbar-col2">col 2</div>
-                <div class="navbar-col3">
-                    <div class="navbar-btn">Search</div>
-                    <div class="navbar-btn">New Pitter</div>
-                    <div class="navbar-btn">Login</div>
+
+                <div class="navbar-col2">
+                    <div>
+                        <img class="brand" src="./assets/twitter-seeklogo.com.svg" class="brand"></img>
+                    </div>
                 </div>
             </div>
         </div>
+
         <div class="mainbody" id="mainbody">
-            <div class="col1">col 1</div>
-            <div class="col2">col 2</div>
-            <div class="col3">col 3</div>
+            <div class="col1">
+                <form id="login">
+                    <h2>Login</h2>
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your Name?" class="login" name="name" value="">
+                    </div>
+                    <div>
+                        <label for="number">Number</label>
+                        <input type="number" id="number" placeholder="Your Number?" class="login" name="number" value="">
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Your Password?" class="login" name="password" value="">
+                    </div>
+
+                    <button id="putBtn" onclick="addUser()" class="user" type="button">Submit</button>
+                </form>
+                <table class="online">
+                    <h5>Logged in:</h5>
+                    <h6 id="loggedIn"></h6>
+                </table>
+            </div>
+            <div class="col2">
+                <form id="newPatter">
+                    <h2>Let's get 'atter</h2>
+                <div>
+                    <label for="Pitter">Pitter</label>
+                    <input type="text" id="new-topic" placeholder="Name it" name="Topic" value="">
+                </div>
+                <div>
+                    <label for="Patter">Patter</label>
+                    <input type="text" id="new-textbox" placeholder="What grinds your gears?" name="box" value="">
+                </div>
+                    
+                    <button id="putBtn" onclick="addPitter()" class="pitter" type="button">Submit</button>
+                </form>
+
+                <div>
+                    <table id="feed" >
+                        <thead>
+                            <tr>
+                                <th>Pitter</th>
+                                <th>Patter</th>
+                            </tr>
+                        </thead>
+                            <tbody class="feed"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col3">
+                <h2>Users</h2>
+                <table class="userlist" id="userlist">
+
+                </table>
+            </div>
         </div>
-    </div>
 
 </body>
 </html>
