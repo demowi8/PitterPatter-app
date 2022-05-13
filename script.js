@@ -1,12 +1,50 @@
 const firebaseURL = "https://pitterpatter-f9978-default-rtdb.firebaseio.com/";
-const jsonEXT = ".json";
+const jsonEXT = "users.json";
 
 
 var selectedRow = null;
 
 
 function addUser() {
+    const $name = $("name").val();
+    const $number = $("number").val();
+    const $password = $("password").val();
 
+    if(!$name || $number || $password) {
+        alert("Registration incomplete")
+    } else {
+        let newUser = {
+            name: $name,
+            number: $number,
+            password: $password
+        }
+        $.ajax({
+            type: "PUT",
+            url:`${firebaseURL}${$name}${jsonEXT}`,
+            data: JSON.stringify({...newUserObj}),
+            success: (user) => {
+                newUser(user);
+            },
+            error: (error)=> {
+                console.log("PUT error", error)
+            }
+        })
+    }
+}
+
+function newUser(userData) {
+    let user = `
+    <div class="newUser">
+      <div class="topic">${userData.name}</td>
+      <div class="content">${userData.number}</td>
+      <div class="content">${userData.number}</td> 
+      <div class="actionBtns">
+      <button class="deleteBtn" onclick="onDelete()" type="button">Delete</button>
+      <button class="editBtn" onclick="onEdit()" type="button">Edit</button>
+      </div>
+    </div>`
+
+    $('#userlist').append(user);
 }
 
 function newPost(postData) {
