@@ -7,7 +7,8 @@
     <title>Pitter Patter</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="navbar.css">
-    <script src="script.js"></script>
+    <script type="javascript/text" src="./script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <body>
     
@@ -45,24 +46,24 @@
 
                     <button id="putBtn" onclick="addUser()" class="user" type="button">Submit</button>
                 </form>
-                <table class="online">
+                <div class="online">
                     <h5>Logged in:</h5>
                     <h6 id="loggedIn"></h6>
-                </table>
+                </div>
             </div>
             <div class="col2">
                 <form id="newPatter">
-                    <h2>Let's get 'atter</h2>
+                    <h2>Let's get 'Atter</h2>
                 <div>
                     <label for="Pitter">Pitter</label>
                     <input type="text" id="new-topic" placeholder="Name it" name="Topic" value="">
                 </div>
                 <div>
                     <label for="Patter">Patter</label>
-                    <input type="text" id="new-textbox" placeholder="What grinds your gears?" name="box" value="">
+                    <input type="text" id="new-textbox" placeholder="What grinds your gears?" name="content" value="">
                 </div>
                     
-                    <button id="putBtn" onclick="addPitter()" class="pitter" type="button">Submit</button>
+                    <button id="putBtn" onclick="addPost()" class="pitter" type="button">Submit</button>
                 </form>
 
                 <div>
@@ -71,17 +72,24 @@
                             <tr>
                                 <th>Pitter</th>
                                 <th>Patter</th>
+                                <th>
+                                    <span class="action">
+                                        <button id="getBtn" onclick="getPosts()" type="button">Gettem</button>
+                                    </span>
+                                </th>
                             </tr>
                         </thead>
-                            <tbody class="feed"></tbody>
+                            <tbody class="feed">
+
+                            </tbody>
                     </table>
                 </div>
             </div>
             <div class="col3">
                 <h2>Users</h2>
-                <table class="userlist" id="userlist">
+                <div class="userlist" id="userlist">
 
-                </table>
+                </div>
             </div>
         </div>
 
