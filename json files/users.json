@@ -1,0 +1,55 @@
+{
+    "users": [
+      {
+        "name": "name",
+        "number": "12345",
+        "password": "password",
+
+      "posts": [
+        {
+          "guid": "16-digit-string",
+          "name": "name",
+          "content": "some type of contents"
+        },
+        {
+            "guid": "16-digit-string",
+            "name": "name",
+            "content": "some type of contents"
+        },
+          
+        {
+            "guid": "16-digit-string",
+            "name": "name",
+            "content": "some type of contents"
+        }
+
+        ]
+       },
+    
+        {
+          "name": "name",
+          "number": "12345",
+          "password": "password",
+  
+        "posts": [
+          {
+            "guid": "16-digit-string",
+            "name": "name",
+            "content": "some type of contents"
+          },
+          {
+              "guid": "16-digit-string",
+              "name": "name",
+              "content": "some type of contents"
+          },
+            
+          {
+              "guid": "16-digit-string",
+              "name": "name",
+              "content": "some type of contents"
+          }
+  
+          ]
+         }
+        ]
+  }
