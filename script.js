@@ -4,26 +4,40 @@ const jsonEXT = "users.json";
 
 var selectedRow = null;
 
+function authenticateUser(user) {
 
-function addUser() {
+}
+
+
+function loginUser() {
     const $name = $("name").val();
     const $number = $("number").val();
     const $password = $("password").val();
 
+    
+}
+
+function registerUser() {
+    const $name = $("name").val();
+    const $number = $("number").val();
+    const $password = $("password").val();
+    
+    
     if(!$name || $number || $password) {
         alert("Registration incomplete")
     } else {
         let newUser = {
             name: $name,
             number: $number,
-            password: $password
+            password: $password,
+            posts: []
         }
         $.ajax({
             type: "PUT",
             url:`${firebaseURL}${$name}${jsonEXT}`,
             data: JSON.stringify({...newUserObj}),
             success: (user) => {
-                newUser(user);
+                newUsertoD(user);
             },
             error: (error)=> {
                 console.log("PUT error", error)
@@ -32,12 +46,12 @@ function addUser() {
     }
 }
 
-function newUser(userData) {
+function newUsertoD(userData) {
     let user = `
     <div class="newUser">
-      <div class="topic">${userData.name}</td>
-      <div class="content">${userData.number}</td>
-      <div class="content">${userData.number}</td> 
+      <div >${userData.name}</td>
+      <div >${userData.number}</td>
+      <div >${userData.password}</td> 
       <div class="actionBtns">
       <button class="deleteBtn" onclick="onDelete()" type="button">Delete</button>
       <button class="editBtn" onclick="onEdit()" type="button">Edit</button>
@@ -94,11 +108,21 @@ function getPosts() {
         success: (data) => {
           // console.log("Retrieving Data: ", data)
           // remove current list
-          $("#feed").empty();
-          Object.keys(data).forEach((post)=>{
-            // console.log("Pet", data[pet]);
-            addPost(data[post]);
-          })
+        //   $("#feed").empty();
+        //   Object.keys(data).forEach((user)=>{
+        //     // console.log("Pet", data[pet]);
+        //     /*
+        //     let postsArray = data[user].posts;
+        //     postsArray.forEach((post)=>{
+        //         // Logic determining if CRUD btns should exist
+        //         // append to feed lists
+        //     })
+
+        //     */
+        //     addPost(data[user].posts);
+        //   })
+        let parsedData = JSON.parse(data)
+        console.log("Data: ", parsedData);
         },
         error: (error) => {
           console.log("Error getting data", error)
@@ -113,42 +137,6 @@ function readPostData() {
     return formData;
 }
 
-function insertNewPost(post){
-    var table = document.getElementById('feed').getElementsByTagName('tbody')[0];
-    var newRow = table.insertRow(table.length);
 
-    cell0 = newRow.insertCell(0);
-    cell0.innerHTML = post.Topic;
 
-    cell1 = newRow.insertCell(1);
-    cell1.innerHTML = post.content;
 
-    cell2 = newRow.insertCell(2);
-    cell2.innerHTML = `<button onClick="onEdit(this)">Edit</button> <button onClick="onDelete(this)">Delete</button>`;
-}
-
-function onEdit(td){
-    selectedRow = td.parentElement.parentElement;
-    document.getElementById("new-topic").value = selectedRow.cells[0].innerHTML;
-    document.getElementById("new-textbox").value = selectedRow.cells[1].innerHTML;
-}
-
-function updatePost(formData) {
-    selectedRow.cells[0].innerHTML = formData.Topic;
-    selectedRow.cells[1].innerHTML = formData.content;
-}
-
-function onDelete(td) {
-    if (confirm('Do you want to delete this record?')) {
-        row = td.parentElement.parentElement;
-        document.getElementById('feed').deleteRow(row.rowIndex);
-        resetForm();
-    }
-}
-
-function resetForm() {
-    document.getElementById("new-topic").value = selectedRow.cells[0].innerHTML;
-    document.getElementById("new-textbox").value = selectedRow.cell[1].innerHTML;
-
-    selectedRow = null;
-}
