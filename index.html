@@ -7,15 +7,13 @@
     <title>Pitter Patter</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="navbar.css">
-    <script type="javascript/text" src="./script.js"></script>
+    <!-- <script type="javascript/text" src="./script.js"></script> -->
 </head>
 <body>
-    
+    <!--NavBar-->
         <div class="navbar" id="main-navbar">
-            <div class="navbar-inner" id="navbar-inner">
                 <div class="navbar-col1">
-                    <div class="navbar-btn">Pitter</div>
-                    <div class="navbar-btn">Patter</div>
+                    <h2 class="navbar-logo">Pitter Patter</h2>
                 </div>
 
                 <div class="navbar-col2">
@@ -23,11 +21,11 @@
                         <img class="brand" src="./assets/twitter-seeklogo.com.svg" class="brand"></img>
                     </div>
                 </div>
-            </div>
         </div>
-
+        <!--Main body-->
         <div class="mainbody" id="mainbody">
-            <div class="col1">
+            <!--Login Card-->
+            <div class="loginCard">
                 <form id="login">
                     <h2>Login</h2>
                     <div>
@@ -43,14 +41,13 @@
                         <input type="password" id="password" placeholder="Your Password?" class="login" name="password" value="">
                     </div>
 
-                    <button id="putBtn" onclick="addUser()" class="user" type="button">Submit</button>
+                    <button id="userBtn" onclick="addUser()" class="user" type="button">Submit</button>
                 </form>
-                <div class="online">
-                    <h5>Logged in:</h5>
-                    <h6 id="loggedIn"></h6>
-                </div>
+
             </div>
-            <div class="col2">
+
+            <!--Create a new Pitter & Pitter Patter Feed -->
+            <div class="mainColumn">
                 <form id="newPatter">
                     <h2>Let's get 'Atter</h2>
                 <div>
@@ -59,39 +56,24 @@
                 </div>
                 <div>
                     <label for="Patter">Patter</label>
-                    <input type="text" id="new-textbox" placeholder="What grinds your gears?" name="content" value="">
+                    <input type="text" id="new-textbox" placeholder="What's on your mind?" name="content" value="">
                 </div>
                     
-                    <button id="putBtn" onclick="addPost()" class="pitter" type="button">Submit</button>
+                    <button id="postBtn" onclick="addPost()" class="pitter" type="button">Submit</button>
                 </form>
+                <!--Pitter Patter Feed-->
+                <section>
+                    <div id="pitterpatter">
+                                <h3>Pitter Patter</h3>
+                                <div id="feed">
 
-                <div>
-                    <table id="feed" >
-                        <thead>
-                            <tr>
-                                <th>Pitter</th>
-                                <th>Patter</th>
-                                <th>
-                                    <span class="action">
-                                        <button id="getBtn" onclick="getPosts()" type="button">Gettem</button>
-                                    </span>
-                                </th>
-                            </tr>
-                        </thead>
-                            <tbody class="feed">
+                                </div>
+                            </div>
 
-                            </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col3">
-                <h2>Users</h2>
-                <div class="userlist" id="userlist">
-
-                </div>
-            </div>
+                </section>
+            </div> 
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
+        <script src="script.js"></script>
 </body>
 </html>
