@@ -7,20 +7,28 @@
     border-bottom: 2px solid brown;
 }
 
-.navbar-inner {
-    width: 1200px;
-    height: 70px;
-    overflow: hidden;
-    background-color: var(--light);
+.navbar h2 {
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 900;
+    margin: 5px 5px 5px 5px;
+    text-align: center;
+    font-size: 1em;
+    color: black;
 }
 
 .navbar-col1 {
-    width: 35%;
+    width: 35%; 
     float: left;
-    height: 90%;
+    height: 100%;
+    font-size: 30px;
+    text-align: center;
     background-color: goldenrod;
     border-bottom-right-radius: 8px;
+    border-right: 2px solid brown;
+    border-bottom: 2px solid brown;
 }
+
+
 
 .navbar-col2 {
    width: 50%;
@@ -30,16 +38,6 @@
 }
 
 
-.navbar-btn {
-    width: 30%;
-    margin-top: 20px;
-    float: left;
-    height: 100%;
-    font-weight: 900;
-    text-align: center;
-    font-size: 1.2em;
-    color: black;
-}
 
 .navbar-btn:hover {
     color:blue;
