@@ -31,6 +31,7 @@ th {
     margin: 10px 10px 10px auto;
     overflow: hidden;
     background-color: var(--light);
+    visibility: hidden;
 }
 
 .loginCard {
