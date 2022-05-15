@@ -1,44 +1,42 @@
 {
-  "SirGentleman":{
+  "user":{
+          "id": 1,
           "name": "Alec Trebec",
           "number": "1234567890",
           "password": "password",
           "posts": [{
-            "guid": "434D4D90-2C6A-4E9E-B6A5-F9AA5D2CCF71",
-            "name": "Alex Trebec",
+            "id": "1",
+            "topic": "Alex ",
             "content": "type of contents"
           },{
-              "guid": "BD5BE432-7674-49AA-847C-EE71C7CF843E",
+              "id": "2",
               "name": "Alec Trebec",
               "content": "sometype of contents"
           },{
-              "guid": "4EF353D4-CFB0-4C70-9A9F-0806F59F632A",
-              "name": "Alex Trebec",
+              "id": "3",
+              "name": "AlexT",
               "content": "some type of content"
           }]
       },
-  "LadyBrainiac": {
+  "user2": {
+          "id": 2,
           "name": "Mayim Bialik",
           "number": "1234509876",
           "password": "newword",
-          "posts": [
-            {
-              "guid": "E75450B7-0044-46BA-A077-89B6C0C86CE6",
-              "name": "Mayim Bialik",
+          "posts": [{
+              "id": "1",
+              "name": "Mayim b",
               "content": "weird type of content"
-            },
-            {
-                "guid": "709FCDFD-D3CC-4896-AB03-3C283F2428BE",
-                "name": "Mayim Bialik",
+            },{
+                "id": "2",
+                "name": "Mayim",
                 "content": "a type of content"
-            },
-              
-            {
-                "guid": "7D80F403-4921-4ED1-A3B0-EC7334940106",
+            },{
+                "id": "3",
                 "name": "Mayim Bialik",
                 "content": "no type of content"
             }
     
-            ]
+          ]
       }
 }
