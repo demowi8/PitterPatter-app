@@ -2,20 +2,45 @@ const firebaseURL = "https://pitterpatter-f9978-default-rtdb.firebaseio.com/";
 const jsonEXT = "users.json";
 
 
-var selectedRow = null;
 
-function authenticateUser(user) {
 
+
+function loginUser() { 
+    const lname = document.getElementById("name").value;
+    const lpassword = document.getElementById("password").value;
+    
+    if(lname=="") {
+        alert("Enter name");
+    } else if(lpassword==""){
+        alert("Enter password");
+    } else {
+        authenticateUser(lname, lpassword);
+    }   
 }
 
+//checks firebase 
+function authenticateUser(name, password) {
+    if(!name == firebaseURL.$name && !password == firebaseURL.$password) {
+        alert("Incorrect username or password")
+    }else {
+        feedToggleShowP();
+    }
+}
 
-function loginUser() {
-    const $name = $("name").val();
-    const $number = $("number").val();
-    const $password = $("password").val();
-
+//get main column element and show entire feed
+//hide login column
+function feedToggleShowP() {
     
 }
+
+//get id of phone number and register button
+//show new button with registerUser function and phone number input field  
+function showRegisterField() {
+    const numField = document.getElementById("number").style;
+    return numField.visibility.replace('hidden', 'visible');
+}
+
+
 
 function registerUser() {
     const $name = $("name").val();
@@ -46,20 +71,7 @@ function registerUser() {
     }
 }
 
-function newUsertoD(userData) {
-    let user = `
-    <div class="newUser">
-      <div >${userData.name}</td>
-      <div >${userData.number}</td>
-      <div >${userData.password}</td> 
-      <div class="actionBtns">
-      <button class="deleteBtn" onclick="onDelete()" type="button">Delete</button>
-      <button class="editBtn" onclick="onEdit()" type="button">Edit</button>
-      </div>
-    </div>`
 
-    $('#userlist').append(user);
-}
 
 function newPost(postData) {
     let post = `
