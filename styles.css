@@ -118,6 +118,7 @@ label {
     width: 80px;
     border:solid black;
     border-radius: 10px;
+    cursor: pointer;
 }
 #getBtn:hover {
     opacity: 60%;
@@ -133,6 +134,26 @@ label {
     border-radius: 10px;
 
 }
+
+#userBtn {
+    background-color: var(--purple);
+    font-size: auto;
+    font-weight: 600;
+    height: auto;
+    width: 80px;
+    border:solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#userBtn:hover {
+    opacity: 60%;
+}
+
+#number {
+    visibility: hidden;
+}
+
 h3{
     text-align: center;
     font-size: xx-large;

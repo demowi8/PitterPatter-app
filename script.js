@@ -75,14 +75,14 @@ function registerUser() {
 
 function newPost(postData) {
     let post = `
-    <tr class="newPatter">
-      <td class="topic">${postData.Topic}</td>
-      <td class="content">${postData.content}</td>
-      <td class="actionBtns">
+    <div class="newPatter">
+      <div class="topic">${postData.Topic}</div>
+      <div class="content">${postData.content}</div>
+      <div class="actionBtns">
       <button class="deleteBtn" onclick="onDelete()" type="button">Delete</button>
       <button class="editBtn" onclick="onEdit()" type="button">Edit</button>
-      </td>
-    </tr>`
+      </div>
+    </div>`
 
     $('#feed').append(post);
 }
@@ -118,21 +118,19 @@ function getPosts() {
         type: "GET",
         url: `${firebaseURL}${jsonEXT}`,
         success: (data) => {
-          // console.log("Retrieving Data: ", data)
-          // remove current list
-        //   $("#feed").empty();
-        //   Object.keys(data).forEach((user)=>{
-        //     // console.log("Pet", data[pet]);
-        //     /*
-        //     let postsArray = data[user].posts;
-        //     postsArray.forEach((post)=>{
-        //         // Logic determining if CRUD btns should exist
-        //         // append to feed lists
-        //     })
+          console.log("Retrieving Data: ", data)
+          
+          $("#feed").empty();
+          Object.keys(data).forEach((user)=>{
 
-        //     */
-        //     addPost(data[user].posts);
-        //   })
+            let postsArray = data[user].posts;
+            postsArray.forEach((post)=>{
+                // Logic determining if CRUD btns should exist
+                // append to feed lists
+            })
+
+            addPost(data[user].posts);
+          })
         let parsedData = JSON.parse(data)
         console.log("Data: ", parsedData);
         },
