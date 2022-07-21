@@ -1,152 +1,119 @@
-const firebaseURL = "https://pitterpatter-f9978-default-rtdb.firebaseio.com/";
-const jsonEXT = "users.json";
+(function () {
+
+    const firebaseURL = "https://pitterpatter-f9978-default-rtdb.firebaseio.com/";
+    const jsonEXT = "users.json";
+    const tweetsEXT = "/tweets/";
+
+    const $ppFeed = $("#feed");
+    const $loginSect = $("#mainBody");
+    const $createPP = $("#mainColumn");
+    const $loginBtn = $("#loginBtn");
+    const $unameInput = $("#name");
+
+    $createPP.hide();
 
 
-
-
-
-function loginUser() { 
-    const lname = document.getElementById("name").value;
-    const lpassword = document.getElementById("password").value;
-    
-    if(lname=="") {
-        alert("Enter name");
-    } else if(lpassword==""){
-        alert("Enter password");
-    } else {
-        authenticateUser(lname, lpassword);
-    }   
+function generateGuid() {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1); 
 }
 
+
+//login User
 //checks firebase 
-function authenticateUser(name, password) {
-    if(!name == firebaseURL.$name && !password == firebaseURL.$password) {
-        alert("Incorrect username or password")
-    }else {
-        feedToggleShowP();
-    }
-}
-
-//get main column element and show entire feed
-//hide login column
-function feedToggleShowP() {
-    
-}
-
-//get id of phone number and register button
-//show new button with registerUser function and phone number input field  
-function showRegisterField() {
-    const numField = document.getElementById("number").style;
-    return numField.visibility.replace('hidden', 'visible');
-}
-
-
-
-function registerUser() {
-    const $name = $("name").val();
-    const $number = $("number").val();
-    const $password = $("password").val();
-    
-    
-    if(!$name || $number || $password) {
-        alert("Registration incomplete")
-    } else {
-        let newUser = {
-            name: $name,
-            number: $number,
-            password: $password,
-            posts: []
-        }
+function authenticateUser(userLoggedIn) {
+    let authenticateUserPromise = new Promise((resolve, reject) => {
         $.ajax({
-            type: "PUT",
-            url:`${firebaseURL}${$name}${jsonEXT}`,
-            data: JSON.stringify({...newUserObj}),
-            success: (user) => {
-                newUsertoD(user);
+            url: `${firebaseURL}${jsonEXT}`,
+            type: "GET",
+            success: (data) => {
+                let usersInDatabase = Object.keys(data); //Array of key properties
+                let userExists = usersInDatabase.includes(userLoggedIn);//Checks if user exists returns true or false
+
+                console.log(usersInDatabase);
+                if (userExists) {
+                    resolve(userLoggedIn)
+                }else {
+                    reject("No user exists!")
+                }
             },
-            error: (error)=> {
-                console.log("PUT error", error)
+            error: (error) => {
+                reject("Ajax call failed");
             }
         })
-    }
+    }).then((usernameData) => {
+        $loginSect.hide();
+        $createPP.show();
+        //executing function here to display data
+        getPPUserFeed(usernameData);
+    }).catch((error) => {
+        console.log(error);
+    })
 }
 
-
-
-function newPost(postData) {
-    let post = `
-    <div class="newPatter">
-      <div class="topic">${postData.Topic}</div>
-      <div class="content">${postData.content}</div>
-      <div class="actionBtns">
-      <button class="deleteBtn" onclick="onDelete()" type="button">Delete</button>
-      <button class="editBtn" onclick="onEdit()" type="button">Edit</button>
-      </div>
-    </div>`
-
-    $('#feed').append(post);
-}
-function addPost() {
-    const $topic = $("#new-topic").val();
-    const $content = $("#new-textbox").val();
-
-    if(!$topic || !$content) {
-        alert("Pitter incomplete")
-    }
-    else {
-        let newPostObj = {
-            Topic: $topic,
-            content: $content
-        }
-        $.ajax({
-            type: "PUT",
-            url:`${firebaseURL}${$topic}${jsonEXT}`,
-            data: JSON.stringify({...newPostObj}),
-            success: (post) => {
-                newPost(post);
-            },
-            error: (error)=> {
-                console.log("PUT error", error)
-            }
-        })
-
-    }
-}
-
-function getPosts() {
+function getPPUserFeed(userLoggedIn) {
     $.ajax({
-        type: "GET",
         url: `${firebaseURL}${jsonEXT}`,
-        success: (data) => {
-          console.log("Retrieving Data: ", data)
-          
-          $("#feed").empty();
-          Object.keys(data).forEach((user)=>{
+        type: "GET",
+        success: function(data) {
+            console.log("Data from get", data);
+            let tweetDatahtml = "";
+            $("#mainColumn").show();
+            $("#textbox").attr('data-loggedInUser', userLoggedIn);
+            $("#textbox").attr('data-editGuid', "null");
+            for (let allUsers in data) {
+                for (let tweetData in data[allUsers].tweets) {
+                    if (data[allUsers].tweets[tweetData].user == userLoggedIn) {
+                        console.log("Its a match!")
+                        tweetDatahtml += 
+                        `<div class="row">
+                            <div class="column">
+                                <div id="pitterpatter> 
+                                    <h3 class ="user"> ${data[allUsers].tweets[tweetData].user}</h3>
+                                    <p class="tweetBody"> ${data[allUsers].tweets[tweetData].text}</p>
+                                    <p class=tweetTime"> ${new Date(data[allUsers].tweets[tweetData].date * 1000).toLocaleTimeString("en-US")}</p>
+                                    
+                                    <td><input data-btnGuid='${data[allUsers].tweets[tweetData].id}' class='edit' type='button' value='Edit'></td>
+                                    <td><input data-btnGuid='${data[allUsers].tweets[tweetData].id}' class='delete' type='button' value='Delete'></td>
+                                </div>
+                            </div>
+                        </div>`
+                    } else {
+                        tweetDatahtml += 
+                        `<div class="row">
+                            <div class="column">
+                                <div id="pitterpatter> 
+                                    <h3 class ="user"> ${data[allUsers].tweets[tweetData].user}</h3>
+                                    <p class="tweetBody"> ${data[allUsers].tweets[tweetData].text}</p>
+                                    <p class=tweetTime"> ${new Date(data[allUsers].tweets[tweetData].date * 1000).toLocaleTimeString("en-US")}</p>
+                                </div>
+                            </div>
+                        </div>`
+                    }
+                }
+            }
+            $ppFeed.html(tweetDatahtml);
 
-            let postsArray = data[user].posts;
-            postsArray.forEach((post)=>{
-                // Logic determining if CRUD btns should exist
-                // append to feed lists
+            //delete functionality
+            $(".delete").click(function() {
+                let $entireRow = $(this).closest('div.row');
+                console.log($entireRow)
+                deleteUserTweet(userLoggedIn, $(this).attr("data-btnguid"));
+                $entireRow.hide();
+            });
+
+            //edit functionality
+            $(".edit").click(function() {
+                $("#btnSubmitTweet").hide();
+                 
             })
-
-            addPost(data[user].posts);
-          })
-        let parsedData = JSON.parse(data)
-        console.log("Data: ", parsedData);
-        },
-        error: (error) => {
-          console.log("Error getting data", error)
         }
-      })
-}
-function readPostData() {
-    var formData = {};
-    formData["new-topic"] = document.getElementById("new-topic").value;
-    formData["new-textbox"] = document.getElementById("new-textbox").value;
-
-    return formData;
+    })
 }
 
+
+
+
+})
 
 
 

@@ -25,7 +25,7 @@
         <!--Main body-->
         <div class="mainbody" id="mainbody">
             <!--Login Card-->
-            <div class="loginCard">
+            <div class="loginCard" id="loginCard">
                 <form id="login">
                     <h2>Login</h2>
                     <div>
@@ -36,40 +36,35 @@
                         <label id="number" for="number">Number</label>
                         <input type="number" id="number" placeholder="Your Number?" class="login" name="number" value="">
                     </div>
-                    <div>
-                        <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Your Password?" class="login" name="password" value="">
-                    </div>
 
-                    <button id="userBtn" onclick="loginUser()" class="user" type="button">Submit</button>
-                    <button id="userBtn" onclick="showRegisterField()" class="user" type="button">New?</button>
+                    <button id="loginBtn" onclick="loginUser()" class="loginBtn" type="button">Submit</button>
                 </form>
 
             </div>
 
             <!--Create a new Pitter & Pitter Patter Feed -->
             <div class="mainColumn">
-                <form id="newPatter">
+                <section id="newPatter">
                     <h2>Let's get 'Atter</h2>
-                <div>
-                    <label for="Pitter">Pitter</label>
-                    <input type="text" id="new-topic" placeholder="Name it" name="Topic" value="">
-                </div>
-                <div>
-                    <label for="Patter">Patter</label>
-                    <input type="text" id="new-textbox" placeholder="What's on your mind?" name="content" value="">
-                </div>
-                    
-                    <button id="postBtn" onclick="addPost()" class="pitter" type="button">Submit</button>
-                </form>
-                <!--Pitter Patter Feed-->
-                <section>
-                    <div id="pitterpatter">
-                                <h3>Pitter Patter</h3>
-                                <div id="feed">
+                <textarea type="text" id="textbox"  value="">
 
-                                </div>
+                </textarea>
+                    
+                    <button id="postBtn"  value="Submit" type="button">Submit</button>
+                </section>
+                <!--Pitter Patter Feed-->
+                <section id="feed">
+                    <div class="row">
+                        <div class="column">
+                            <div id="pitterpatter">
+                                <h3 class="user">Pitter Patter</h3>
+                                <p class="tweetBody"></p>
+                                <p class="tweetTime"></p>
+                                <button type="button">Edit</button>
+                                <button type="button">Delete</button>
                             </div>
+                        </div>
+                    </div>
 
                 </section>
             </div> 

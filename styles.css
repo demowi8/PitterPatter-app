@@ -25,13 +25,20 @@ th {
 
 }
 
+.row {margin: 0 -5px;}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 5px 10px;
+}
+
 .mainColumn {
     width: 100%;
     height: auto;
     margin: 10px 10px 10px auto;
     overflow: hidden;
     background-color: var(--light);
-    visibility: hidden;
 }
 
 .loginCard {
@@ -81,24 +88,18 @@ label {
     border-radius: 10px;
 }
 
-#new-topic {
+
+
+#textbox {
     display:inline-block;
-    width: 40%;
-    height: 20%;
-    border: 2px solid brown;
-    border-radius: 8px;
-    margin: 2px 5px 3px 5px;
-}
-#new-textbox {
-    display:inline-block;
-    width: 55%;
+    width: 60%;
     height: 40%;
     border: 2px solid brown;
     border-radius: 8px;
-    margin: auto auto auto auto;
-    vertical-align: text-top;
+    margin: auto auto auto 8rem;
+    text-align: left;
 }
-#postBtn, #userBtn{
+#postBtn, #loginBtn{
     background-color: var(--purple);
     font-size: 1.25rem;
     height: 35px;
@@ -135,7 +136,7 @@ label {
 
 }
 
-#userBtn {
+#loginBtn {
     background-color: var(--purple);
     font-size: auto;
     font-weight: 600;
@@ -146,7 +147,7 @@ label {
     cursor: pointer;
 }
 
-#userBtn:hover {
+#loginBtn:hover {
     opacity: 60%;
 }
 
