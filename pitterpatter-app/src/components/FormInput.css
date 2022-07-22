@@ -1,0 +1,44 @@
+
+label {
+    text-align: left;
+    font-weight: 450;
+    font-size: 2.25rem;
+    margin-right: 1rem;
+}
+
+.loginCard {
+    display:flexbox;
+    width: 50%;
+    height: 50%;
+    margin-top: 10px;
+    margin-left: 25%;
+    background-color: whitesmoke;
+    padding: 10px;
+    border: 1rem solid black;
+}
+
+.login {
+   margin: 0px;
+   border: 1px solid black;
+   border-radius: 10px;
+   height: 20px;
+   width: 40%;
+   text-align: left;
+
+}
+
+/* 
+.loginBtn {
+   background-color: whitesmoke;
+   font-size: auto;
+   font-weight: 600;
+   height: auto;
+   width: 80px;
+   border:solid black;
+   border-radius: 10px;
+   cursor: pointer;
+}
+
+#loginBtn:hover {
+   opacity: 60%;
+} */
