@@ -1,21 +1,22 @@
 import FormInput from './FormInput';
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-
+import { UserAuth } from '../context/AuthContext';
 
 
 const SignUp = () => {
     const [profileValues, setProfileValues] = useState({
-        username:"",
+        email:"",
         password:"",
       });
-    
-      const inputs = [{
+    const [error, setError] = useState('');
+    const { createUser } = UserAuth();
+    const inputs = [{
         id: 1,
-        name:'username',
-        type:'text',
-        placeholder:'Username',
-        label:'Username',
+        name:'email',
+        type:'email',
+        placeholder:'Email',
+        // label:'E-mail',
         required: true
       },
       {
@@ -23,20 +24,31 @@ const SignUp = () => {
         name:'password',
         type:'text',
         placeholder:'Password',
-        label:'Password',
+        // label:'Password',
         required: true
       }]
     
-      const handleSubmit = (e)=> {
+      const handleSubmit = async (e)=> {
         e.preventDefault();
+        setError('');
+        try{
+            await createUser(profileValues.email, profileValues.password)
+
+        } catch (e) {
+            setError(e.message)
+            console.log(e.message);
+        }
       };
     
       const onChange = (e)=>{
         setProfileValues({...profileValues, [e.target.name]: e.target.value });
       }
     return (
-        <div>
-            <form className='loginCard' onSubmit={handleSubmit}>
+        <div className='loginCard' >
+            <div className='title'>
+                <h1>Sign Up</h1>
+            </div>
+            <form onSubmit={handleSubmit}>
                 {inputs.map((input) => (
             <FormInput 
             key={input.id} 
@@ -44,7 +56,7 @@ const SignUp = () => {
             value={profileValues[input.name]}
             onChange={onChange}/>
             ))}
-            <button className='Btn'>Register</button>
+            <button className='Btn'>Submit</button>
             <p>Already have an account yet? <Link to='/'>Sign In.</Link></p>
             </form>
         </div>
