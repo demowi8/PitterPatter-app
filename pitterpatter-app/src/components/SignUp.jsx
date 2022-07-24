@@ -1,6 +1,6 @@
 import FormInput from './FormInput';
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext';
 
 
@@ -11,6 +11,7 @@ const SignUp = () => {
       });
     const [error, setError] = useState('');
     const { createUser } = UserAuth();
+    const navigate = useNavigate();
     const inputs = [{
         id: 1,
         name:'email',
@@ -32,7 +33,8 @@ const SignUp = () => {
         e.preventDefault();
         setError('');
         try{
-            await createUser(profileValues.email, profileValues.password)
+            await createUser(profileValues.email, profileValues.password);
+            navigate('/account');
 
         } catch (e) {
             setError(e.message)
@@ -56,7 +58,7 @@ const SignUp = () => {
             value={profileValues[input.name]}
             onChange={onChange}/>
             ))}
-            <button className='Btn'>Submit</button>
+            <button className='Btn'>Register</button>
             <p>Already have an account yet? <Link to='/'>Sign In.</Link></p>
             </form>
         </div>
