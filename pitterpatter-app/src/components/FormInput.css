@@ -35,7 +35,7 @@ span{
    border: 1px solid black;
    border-radius: 4px;
    align-self: center;
-   height: 20px;
+   height: 40px;
    width: 80%;
    text-align: left;
 }
@@ -55,6 +55,6 @@ span{
    cursor: pointer;
 }
 
-.loginBtn:hover {
+.Btn:hover {
    opacity: 60%;
 }
