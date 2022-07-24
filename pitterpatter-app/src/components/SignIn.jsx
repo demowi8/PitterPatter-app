@@ -1,10 +1,13 @@
 import FormInput from './FormInput';
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-
+import {Link, useNavigate} from 'react-router-dom';
+import { UserAuth } from '../context/AuthContext';
 
 
 const SignIn =() => {
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const { signIn } = UserAuth();
     const [profileValues, setProfileValues] = useState({
         email:"",
         password:"",
@@ -28,9 +31,18 @@ const SignIn =() => {
         // label:'Password',
         required: true
       }]
-    
-      const handleSubmit = (e)=> {
+      
+
+      const handleSubmit = async (e)=> {
         e.preventDefault();
+        setError('');
+        try {
+            await signIn(profileValues.email, profileValues.password);
+            navigate('/account');
+        } catch (e) {
+            setError(e.message)
+            console.log(e.message)
+        }
       };
     
       const onChange = (e)=>{
