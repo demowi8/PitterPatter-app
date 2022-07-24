@@ -1,51 +1,28 @@
 import './App.css';
-import FormInput from './components/FormInput';
-import './components/navbar'
+import {Route, Routes} from 'react-router-dom'
 import NavBar from './components/navbar';
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+import Account from './components/Account';
+
 
 function App() {
-  const [profileValues, setProfileValues] = useState({
-    username:"",
-    password:"",
-  });
+  //2 function button login and register
+  // login button checks if username&password are in database and if they are they show profile card, create tweets, and tweets from user and other users
+  // register button creates a new username&password and adds to database then logs profile in
 
-  const inputs = [{
-    id: 1,
-    name:'username',
-    type:'text',
-    placeholder:'Username',
-    label:'Username'
-  },
-  {
-    id: 2,
-    name:'password',
-    type:'text',
-    placeholder:'Password',
-    label:'Password'
-  }]
 
-  const handleSubmit = (e)=> {
-    e.preventDefault();
-  };
 
-  const onChange = (e)=>{
-    setProfileValues({...profileValues, [e.target.name]: e.target.value });
-  }
   return (<div className='App'>
     <NavBar />
 
-    <form className='loginCard' onSubmit={handleSubmit}>
-      {inputs.map((input) => (
-        <FormInput 
-        key={input.id} 
-        {...input} 
-        value={profileValues[input.name]}
-        onChange={onChange}/>
 
-      ))}
+    <Routes>
+      <Route path='/' element={<SignIn />} />
+      <Route path='/signup' element={<SignUp />} />
+      <Route path='/account' element={<Account />} />
+    </Routes>
 
-    <button>Submit</button>
-    </form>
   </div>
     
   );
