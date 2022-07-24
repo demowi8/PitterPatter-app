@@ -2,9 +2,13 @@ import React from 'react';
 
 
 
-const Account = () => {
+const Account = (props) => {
     return (
-        <div></div>
+        <div>
+            <h1>{props.username}</h1>
+
+            <button className='Btn'>Logout</button>
+        </div>
     )
 }
 
