@@ -6,17 +6,17 @@ import {Link} from 'react-router-dom';
 
 const SignIn =() => {
     const [profileValues, setProfileValues] = useState({
-        username:"",
+        email:"",
         password:"",
       });
     
       const inputs = [{
         id: 1,
-        name:'username',
-        type:'text',
-        placeholder:'Username',
-        errorMessage:'Username did not match',
-        label:'Username',
+        name:'email',
+        type:'email',
+        placeholder:'Email',
+        errorMessage:'email did not match',
+        // label:'E-mail',
         required: true
       },
       {
@@ -25,7 +25,7 @@ const SignIn =() => {
         type:'text',
         placeholder:'Password',
         errorMessage:'Password did not match',
-        label:'Password',
+        // label:'Password',
         required: true
       }]
     
@@ -37,8 +37,11 @@ const SignIn =() => {
         setProfileValues({...profileValues, [e.target.name]: e.target.value });
       }
     return (
-    <div>
-        <form className='loginCard' onSubmit={handleSubmit}>
+    <div className='loginCard'>
+        <div className='title'>
+            <h1>Sign In</h1>
+        </div>
+        <form onSubmit={handleSubmit}>
         {inputs.map((input) => (
             <FormInput 
             key={input.id} 
