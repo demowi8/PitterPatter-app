@@ -50,9 +50,7 @@ const SignIn =() => {
       }
     return (
     <div className='loginCard'>
-        <div className='title'>
             <h1>Sign In</h1>
-        </div>
         <form onSubmit={handleSubmit}>
         {inputs.map((input) => (
             <FormInput 
