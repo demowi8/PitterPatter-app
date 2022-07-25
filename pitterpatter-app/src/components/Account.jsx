@@ -5,9 +5,8 @@ import './Account.css';
 import {useState, useEffect } from 'react'
 import {db} from '../firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import ProfileCard from './ProfileCard';
 
-const Account = (props) => {
+const Account = () => {
     //each user to be able to create a new post on their account 
     //each user must be able to edit and delete post from their account only
     //each user can see posts from all users on their account
@@ -42,7 +41,6 @@ const Account = (props) => {
 
             <button onClick={handleLogout} className='LogBtn'>Logout</button>
 
-            <ProfileCard />
         </div>
     )
 }
