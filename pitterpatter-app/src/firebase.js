@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth} from "firebase/auth";
-import { getFirestore } from "@firebase/firestore";
+import { getDatabase } from "firebase/database";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -12,11 +12,13 @@ const firebaseConfig = {
   projectId: "the-pitterpatter-app",
   storageBucket: "the-pitterpatter-app.appspot.com",
   messagingSenderId: "991100666603",
+  databaseURL: "https://the-pitterpatter-app-default-rtdb.firebaseio.com/",
   appId: "1:991100666603:web:b2c86d45cd8c7c2a7af4ae"
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore();
+export const db = getDatabase(app, "https://the-pitterpatter-app-default-rtdb.firebaseio.com/");
 export const auth = getAuth(app);
 export default app;
