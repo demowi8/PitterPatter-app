@@ -1,0 +1,30 @@
+{
+    "users": {
+        "demowi8": {
+        "email": "demowi8@gmail.com",
+        "password": "demowi",
+        "posts": {
+            "id": "b2e69f2e-7c0e-46e2-9f9c-7dce8e46448b",
+            "postTitle": "New Post Test",
+            "content": "This is a test post"
+            ,
+            "id": "aa20733b-9320-4eb5-bf22-5d2020262553",
+            "postTitle": "Stupid post",
+            "content": "Another stupid post"
+        }
+    },
+        "stupid": {
+            "email": "stupid@test.com",
+            "password": "stupid",
+            "posts": {
+                "id": "bee0a65d-1eb2-4bb5-9ba8-334001e12d9c",
+                "postTitle": "A post",
+                "content": "Guess what another post"
+                ,
+                "id": "80a20157-2fb4-4828-aa37-20401169f63d",
+                "postTitle": "Check it out",
+                "content": "Posted post"
+            }
+        }
+    }
+}
