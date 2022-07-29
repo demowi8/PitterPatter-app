@@ -1,8 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserAuth, db } from '../context/AuthContext';
+import { UserAuth } from '../context/AuthContext';
 import './Account.css';
 import NewPostCard from './NewPostCard';
+import { PostsList } from '../features/posts/postsList';
+
 
 const Account = () => {
     //each user to be able to create a new post on their account 
@@ -34,9 +36,11 @@ const Account = () => {
             <button onClick={handleLogout} className='LogBtn'>Logout</button>
             </div>
 
-            <div>
                 <NewPostCard />
-            </div>
+                
+                <PostsList />
+                
+
         </div>
     )
 }

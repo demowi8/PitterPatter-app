@@ -1,8 +1,7 @@
 import React from "react";
 import {useState } from 'react';
 import './NewPostCard.css';
-import {db} from 'firebase';
-import { set } from "firebase/database";
+import { ref, child, push, update, getDatabase } from "firebase/database";
 
 const NewPostCard =(props) => {
     const [post, setPost] = useState({
@@ -10,8 +9,25 @@ const NewPostCard =(props) => {
         content: ""
     });
 
-    const createNewPost = () => {
-        
+    
+
+    const createNewPost = (uid, user, content) => {
+        const db = getDatabase();
+
+        const postData = {
+            user: post.user,
+            uid: uid,
+            content: post.content
+        };
+        const newPostKey = push(child(ref(db), 'posts')).key;
+
+        const updates = {};
+        updates['/posts/' + newPostKey] = postData;
+        updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+        setPost(postData);
+
+        return update(ref(db), updates);
+
     }
 
     const handlePost = () => {
@@ -26,7 +42,7 @@ const NewPostCard =(props) => {
     return (
         <div className="newPost">
             <h2>Let's get 'Atter</h2>
-            <textarea value=''  placeholder="Say something..."/>
+            <input value=''  placeholder="Say something..."/>
 
             <button onClick={handlePost} className='PostBtn'>Send</button>
         </div>
